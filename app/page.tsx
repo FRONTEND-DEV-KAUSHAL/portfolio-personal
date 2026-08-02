@@ -19,24 +19,16 @@ export default function Home() {
         <MissionSection />
         {/* <TrackSplitSection /> */}
         <RiderTechSection />
-        <div className="relative w-full h-[120px] md:h-[160px] lg:h-[200px] overflow-hidden bg-white">
-          <Image
-            src="/images/trilha2.svg"
-            alt="Tire track divider"
-            fill
-            className="object-cover object-center"
-            priority={false}
-          />
+        {/* Digital Line Divider */}
+        <div className="relative w-full h-[100px] bg-background flex items-center justify-center overflow-hidden">
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-lorenzo-accent/30 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
         </div>
         <HelmetHall />
-        <div className="relative w-full h-[120px] md:h-[160px] lg:h-[200px] overflow-hidden bg-white">
-          <Image
-            src="/images/splash.svg"
-            alt="Tire track divider"
-            fill
-            className="object-cover object-center bg-lorenzo-dark"
-            priority={false}
-          />
+        {/* Digital Line Divider */}
+        <div className="relative w-full h-[100px] bg-background flex items-center justify-center overflow-hidden">
+          <div className="w-full h-px bg-gradient-to-r from-transparent via-lorenzo-accent/30 to-transparent" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] opacity-20" />
         </div>
         <BikeShowcase />
 

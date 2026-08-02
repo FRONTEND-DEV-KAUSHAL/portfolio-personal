@@ -5,7 +5,6 @@ import { Canvas } from "@react-three/fiber"
 import { Environment, PerspectiveCamera } from "@react-three/drei"
 import { motion } from "framer-motion"
 import Helmet3DModel from "./helmet-3d-model"
-import InfiniteLogoSlider from "./infinite-logo-slider"
 
 function LoadingFallback() {
   return (
@@ -86,8 +85,8 @@ export default function Footer() {
                   transition={{ duration: 0.8 }}
                   className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter leading-[0.9] text-lorenzo-text-light mix-blend-overlay opacity-90"
                 >
-                  <span className="font-sans block">ALWAYS 
-                  <span className="font-brier text-lorenzo-accent"> BUILDING</span>
+                  <span className="font-sans block">ALWAYS
+                    <span className="font-brier text-lorenzo-accent"> BUILDING</span>
                   </span>
                   <span className="font-sans block">
                     THE <span className="font-brier text-lorenzo-accent">FUTURE.</span>
@@ -133,8 +132,8 @@ export default function Footer() {
               </h4>
               <ul className="space-y-2">
                 {[
-                  { name: "GITHUB", link: "https://github.com" },
-                  { name: "LINKEDIN", link: "https://linkedin.com" },
+                  { name: "GITHUB", link: "https://github.com/FRONTEND-DEV-KAUSHAL" },
+                  { name: "LINKEDIN", link: "https://in.linkedin.com/in/kaushal-gohil-242362224" },
                   { name: "EMAIL", link: "mailto:gohilkaushal16@email.com" },
                 ].map((platform) => (
                   <li className="leading-5" key={platform.name}>
@@ -152,11 +151,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Partners Row */}
-          {/* Added mb-8 to ensure logos don't touch the bottom edge of the mask */}
-          <div className="border-lorenzo-text-light/10 border-t-0 mb-0 mt-32 pt-0">
-            <InfiniteLogoSlider />
-          </div>
         </div>
       </div>
 
@@ -179,7 +173,7 @@ export default function Footer() {
       <div className="w-full max-w-[1688px] mx-auto px-8 md:px-12 relative z-20 pt-0">
         <div className="flex flex-col md:flex-row justify-between items-center text-lorenzo-dark text-xs font-bold tracking-wider uppercase">
           <p className="text-xs mt-7 opacity-40 font-medium leading-4 text-left">
-            This portfolio was designed and developed by Kaushal Gohil. Inspired by Lando Norris and motocross layouts. Kaushal Gohil is a MERN & MEAN Full Stack Developer specializing in AI-integrated SaaS, real-time architectures, and secure fintech workflows. All product and brand trademarks are the property of their respective owners.
+            This portfolio was designed and developed by Kaushal Gohil. Built with React, Next.js, and Three.js. Kaushal Gohil is a MERN & MEAN Full Stack Developer specializing in AI-integrated SaaS, real-time architectures, and secure fintech workflows. All product and brand trademarks are the property of their respective owners.
           </p>
         </div>
       </div>

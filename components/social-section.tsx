@@ -4,14 +4,42 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 
-const socialImages = [
-  "/images/lofan/lofan2.jpg",
-  "/images/lorenzo-piloto2.png",
-  "/images/lorenzo-piloto3.png",
-  "/images/lofan/lofan8.jpg", // Center image
-  "/images/lorenzo-piloto5.png",
-  "/images/lorenzo-piloto1.png", // Added to reach 7
-  "/images/lorenzo-col.jpg", // Added to reach 7
+const devStrengths = [
+  {
+    title: "Frontend Architecture",
+    description: "Building fast, type-safe, and highly interactive user interfaces using Next.js, React, and Tailwind CSS.",
+    tech: "TypeScript • Next.js • React",
+  },
+  {
+    title: "WebGL & Graphics",
+    description: "Designing high-performance, immersive 3D layouts and custom shaders using Three.js and Canvas elements.",
+    tech: "Three.js • Custom Shaders • Canvas",
+  },
+  {
+    title: "Type Safety & Security",
+    description: "Establishing type integrity and secure APIs to prevent runtime issues and keep user data protected.",
+    tech: "TypeScript • Schema validation",
+  },
+  {
+    title: "Real-Time Communication",
+    description: "Engineering sub-100ms real-time audio/video streaming platforms and collaborative modules.",
+    tech: "WebRTC • Socket.io • Janus.js",
+  },
+  {
+    title: "Backend Engineering",
+    description: "Designing robust server architectures, RESTful APIs, and efficient background worker microservices.",
+    tech: "Node.js • Express • REST APIs",
+  },
+  {
+    title: "Database Architectures",
+    description: "Modeling performant relational and document schema models with robust validation rules.",
+    tech: "PostgreSQL • MongoDB • Redis",
+  },
+  {
+    title: "DevOps & Deployments",
+    description: "Automating builds, containerizing server suites, and orchestrating serverless edge delivery.",
+    tech: "Docker • Vercel • GitHub Actions",
+  },
 ]
 
 const handIcons = [
@@ -76,7 +104,7 @@ export default function SocialSection() {
           viewport={{ once: true }}
           className="relative h-[600px] md:h-[700px] mb-16 flex items-center justify-center"
         >
-          {socialImages.map((image, i) => (
+          {devStrengths.map((item, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, rotate: 0, scale: 0 }}
@@ -102,11 +130,32 @@ export default function SocialSection() {
                 y: -40,
                 transition: { duration: 0.3 },
               }}
-              className="absolute w-60 md:w-80 h-80 md:h-[480px] bg-white rounded-3xl shadow-2xl overflow-hidden cursor-pointer origin-bottom"
+              className="absolute w-60 md:w-80 h-80 md:h-[480px] bg-zinc-950 border border-white/10 hover:border-lorenzo-accent/50 rounded-3xl shadow-2xl p-6 md:p-8 cursor-pointer origin-bottom flex flex-col justify-between"
               style={{ zIndex: 10 - Math.abs(i - 3) }} // Adjusted z-index logic for 7 items
             >
-              <div className="relative w-full h-full">
-                <Image src={image || "/placeholder.svg"} alt={`Social post ${i + 1}`} fill className="object-cover" />
+              <div className="flex flex-col h-full justify-between select-none">
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] font-mono tracking-widest text-lorenzo-accent uppercase bg-lorenzo-accent/10 px-2 py-0.5 rounded border border-lorenzo-accent/20">
+                      SPECS.0{i + 1}
+                    </span>
+                    <div className="text-[9px] font-mono text-white/30">ID.GOHIL.{i+1}</div>
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-tight mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs md:text-sm text-zinc-400 leading-relaxed font-sans font-medium">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="border-t border-white/5 pt-4">
+                  <div className="text-[9px] font-mono uppercase tracking-wider text-white/40 mb-1">
+                    Core tech
+                  </div>
+                  <div className="text-xs font-mono text-lorenzo-accent">
+                    {item.tech}
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}
@@ -123,8 +172,8 @@ export default function SocialSection() {
 
           <div className="flex flex-wrap justify-center gap-6">
             {[
-              { name: "GITHUB", link: "https://github.com" },
-              { name: "LINKEDIN", link: "https://linkedin.com" },
+              { name: "GITHUB", link: "https://github.com/FRONTEND-DEV-KAUSHAL" },
+              { name: "LINKEDIN", link: "https://in.linkedin.com/in/kaushal-gohil-242362224" },
               { name: "EMAIL", link: "mailto:gohilkaushal16@email.com" },
             ].map((platform) => (
               <motion.a

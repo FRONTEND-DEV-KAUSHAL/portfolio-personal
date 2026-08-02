@@ -176,7 +176,7 @@ export default function Header() {
                   <motion.a
                     key={social}
                     whileHover={{ scale: 1.1 }}
-                    href={social === "LINKEDIN" ? "https://linkedin.com" : "https://github.com"}
+                    href={social === "LINKEDIN" ? "https://in.linkedin.com/in/kaushal-gohil-242362224" : "https://github.com/FRONTEND-DEV-KAUSHAL"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-bold text-white/60 hover:text-lorenzo-accent transition-colors"

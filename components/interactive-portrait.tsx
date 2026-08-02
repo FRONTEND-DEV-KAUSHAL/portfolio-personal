@@ -282,6 +282,44 @@ export default function InteractivePortrait() {
     bgPlane.position.z = 0.05
     helmetImage.position.z = 0.1
 
+    // Add floating 3D tech shapes
+    const floatingShapes: THREE.Mesh[] = []
+    const shapeGeometries = [
+      new THREE.IcosahedronGeometry(45, 1),
+      new THREE.TorusGeometry(30, 8, 8, 24),
+      new THREE.BoxGeometry(45, 45, 45),
+      new THREE.OctahedronGeometry(40, 0),
+    ]
+
+    for (let i = 0; i < 5; i++) {
+      const geom = shapeGeometries[i % shapeGeometries.length]
+      const mat = new THREE.MeshBasicMaterial({
+        color: 0xc8f550,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.12,
+      })
+      const mesh = new THREE.Mesh(geom, mat)
+      const angle = (i / 5) * Math.PI * 2
+      const radiusX = width * 0.35 + Math.random() * 50
+      const radiusY = height * 0.35 + Math.random() * 50
+      mesh.position.x = Math.cos(angle) * radiusX
+      mesh.position.y = Math.sin(angle) * radiusY
+      mesh.position.z = 0.08 + Math.random() * 0.04
+
+      mesh.userData = {
+        rotSpeedX: 0.005 + Math.random() * 0.01,
+        rotSpeedY: 0.005 + Math.random() * 0.01,
+        driftSpeed: 0.2 + Math.random() * 0.3,
+        driftRange: 15 + Math.random() * 20,
+        baseY: mesh.position.y,
+        baseX: mesh.position.x,
+        phase: Math.random() * Math.PI * 2,
+      }
+      scene.add(mesh)
+      floatingShapes.push(mesh)
+    }
+
     const clock = new THREE.Clock()
     let t = 0
 
@@ -291,6 +329,16 @@ export default function InteractivePortrait() {
       gu.time.value = t
       gu.dTime.value = dt
       blob.render()
+
+      // Animate floating shapes
+      floatingShapes.forEach((shape) => {
+        shape.rotation.x += shape.userData.rotSpeedX
+        shape.rotation.y += shape.userData.rotSpeedY
+        const timeFactor = t * shape.userData.driftSpeed + shape.userData.phase
+        shape.position.y = shape.userData.baseY + Math.sin(timeFactor) * shape.userData.driftRange
+        shape.position.x = shape.userData.baseX + Math.cos(timeFactor * 0.7) * (shape.userData.driftRange * 0.5)
+      })
+
       renderer.render(scene, camera)
       animationFrameRef.current = requestAnimationFrame(animate)
     }
@@ -300,6 +348,15 @@ export default function InteractivePortrait() {
     const handleResize = () => {
       const newWidth = container.clientWidth
       const newHeight = container.clientHeight
+
+      // Resize floating shapes positions
+      floatingShapes.forEach((shape, i) => {
+        const angle = (i / 5) * Math.PI * 2
+        const radiusX = newWidth * 0.35 + Math.random() * 50
+        const radiusY = newHeight * 0.35 + Math.random() * 50
+        shape.userData.baseX = Math.cos(angle) * radiusX
+        shape.userData.baseY = Math.sin(angle) * radiusY
+      })
       camera.left = newWidth / -2
       camera.right = newWidth / 2
       camera.top = newHeight / 2
@@ -359,15 +416,12 @@ export default function InteractivePortrait() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 w-full h-full bg-[#1a1f1a] cursor-crosshair overflow-hidden"
+      className="absolute inset-0 w-full h-full bg-lorenzo-dark cursor-crosshair overflow-hidden"
       style={{ touchAction: "none" }}
     >
-      <img
-        src="/images/inspired-by-lando-norris.png"
-        alt="Inspired by Lorenzo"
-        className="absolute bottom-4 left-4 z-10 pointer-events-none"
-        style={{ maxWidth: "120px", width: "120px", height: "auto" }}
-      />
+      <div className="absolute bottom-6 left-6 z-10 font-mono text-[10px] tracking-widest text-[#c8f550]/40 uppercase pointer-events-none">
+        [ built with next.js + three.js ]
+      </div>
     </div>
   )
 }

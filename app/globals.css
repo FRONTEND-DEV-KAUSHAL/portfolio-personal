@@ -5,16 +5,16 @@
 
 :root {
   --darkcinzabg: #111112;
-  --lorenzo-dark: #282c20;
-  --lorenzo-darkbk: #282c20;
-  --lorenzo-light: #e8e8e3;
+  --lorenzo-dark: #090a0f;
+  --lorenzo-darkbk: #090a0f;
+  --lorenzo-light: #f3f4f6;
   --lorenzo-accent: #c8f550;
   --lorenzo-text-dark: #000000;
   --lorenzo-text-light: #ffffff;
-  --verdetitulo: #282c20;
-  --background: #282c20;
+  --verdetitulo: #090a0f;
+  --background: #090a0f;
   /* --background: oklch(0.92 0.01 80); */
-  --foreground: oklch(0.145 0 0);
+  --foreground: #f3f4f6;
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
